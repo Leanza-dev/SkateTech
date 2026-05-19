@@ -1,0 +1,21 @@
+# Node / React Native dependencies
+node_modules/
+.expo/
+dist/
+build/
+
+# Expo
+.expo-shared/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment secrets
+.env
+.env.local
+.env.production
