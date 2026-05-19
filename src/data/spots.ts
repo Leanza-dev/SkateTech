@@ -34,7 +34,8 @@ export const MOCK_SPOTS: Spot[] = [
     city: 'São Paulo, SP',
     difficulty: 'pro',
     type: 'rua',
-    imageUri: 'https://images.unsplash.com/photo-1542621334-a254cf47733d?w=800&q=80',
+    // Urban concrete plaza — wide steps, granite ledges, brutalist architecture
+    imageUri: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
     dropIns: 4284,
     photoCount: 1347,
     features: ['Bancos de Concreto', 'Bordas', 'Piso Liso'],
@@ -47,7 +48,8 @@ export const MOCK_SPOTS: Spot[] = [
     city: 'São Paulo, SP',
     difficulty: 'pro',
     type: 'rua',
-    imageUri: 'https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=800&q=80',
+    // Brutalist urban staircase & handrail — raw concrete architecture
+    imageUri: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&q=80',
     dropIns: 2891,
     photoCount: 812,
     features: ['Corrimão', 'Escada 14 Degraus', 'Gap Gigante'],
@@ -60,7 +62,8 @@ export const MOCK_SPOTS: Spot[] = [
     city: 'São Paulo, SP',
     difficulty: 'intermediate',
     type: 'rua',
-    imageUri: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&q=80',
+    // Open urban public square — granite pavement, open skies
+    imageUri: 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80',
     dropIns: 1743,
     photoCount: 489,
     features: ['Gap', 'Manual Pad', 'Bordas de Granito'],
@@ -73,7 +76,8 @@ export const MOCK_SPOTS: Spot[] = [
     city: 'São Paulo, SP',
     difficulty: 'beginner',
     type: 'rua',
-    imageUri: 'https://images.unsplash.com/photo-1605106901227-991bd663255a?w=800&q=80',
+    // Elevated urban highway — long asphalt stretch, city skyline
+    imageUri: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=800&q=80',
     dropIns: 3210,
     photoCount: 567,
     features: ['Long Line', 'Flatground', 'Asfalto Liso'],
