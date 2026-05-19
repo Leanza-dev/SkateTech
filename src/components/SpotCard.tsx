@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { MapPin, Camera, TrendingUp } from 'lucide-react-native';
 import { Spot } from '../data/spots';
-import { COLORS, DIFFICULTY_CONFIG, FONT, SPACING, RADIUS } from '../theme';
+import { COLORS, DIFFICULTY_CONFIG, TYPE_CONFIG, FONT, SPACING, RADIUS } from '../theme';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -25,6 +25,21 @@ interface DifficultyBadgeProps {
 
 const DifficultyBadge = memo(({ difficulty }: DifficultyBadgeProps) => {
   const config = DIFFICULTY_CONFIG[difficulty];
+  return (
+    <View style={[styles.badge, { backgroundColor: config.color + '22', borderColor: config.color + '55' }]}>
+      <Text style={[styles.badgeText, { color: config.color }]}>
+        {config.emoji}  {config.label.toUpperCase()}
+      </Text>
+    </View>
+  );
+});
+
+interface TypeBadgeProps {
+  type: Spot['type'];
+}
+
+const TypeBadge = memo(({ type }: TypeBadgeProps) => {
+  const config = TYPE_CONFIG[type];
   return (
     <View style={[styles.badge, { backgroundColor: config.color + '22', borderColor: config.color + '55' }]}>
       <Text style={[styles.badgeText, { color: config.color }]}>
@@ -77,8 +92,9 @@ export const SpotCard = memo(({ spot, onPress }: SpotCardProps) => {
         {/* Gradient overlay for text legibility */}
         <View style={styles.imageOverlay} />
 
-        {/* Difficulty badge — top right */}
+        {/* Badges — top right */}
         <View style={styles.badgeContainer}>
+          <TypeBadge type={spot.type} />
           <DifficultyBadge difficulty={spot.difficulty} />
         </View>
       </View>
@@ -156,6 +172,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: SPACING.md,
     right: SPACING.md,
+    flexDirection: 'row',
+    gap: SPACING.xs,
   },
 
   // Badge

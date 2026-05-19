@@ -22,6 +22,10 @@ export const COLORS = {
   advanced: '#ef4444',     // red
   pro: '#a855f7',          // purple
 
+  // Spot type badges
+  pista: '#3b82f6',        // blue  — pista estruturada
+  rua: '#fb923c',          // orange — rua / street
+
   // Borders
   border: '#3f3f46',
 } as const;
@@ -71,4 +75,13 @@ export const DIFFICULTY_CONFIG: Record<Difficulty, { label: string; color: strin
   intermediate: { label: 'Intermediário', color: COLORS.intermediate, emoji: '🟡' },
   advanced:     { label: 'Avançado',      color: COLORS.advanced,     emoji: '🔴' },
   pro:          { label: 'Pro',           color: COLORS.pro,          emoji: '🟣' },
+};
+
+// ─── Spot Type Config ─────────────────────────────────────────────────────────
+
+export type SpotType = 'pista' | 'rua';
+
+export const TYPE_CONFIG: Record<SpotType, { label: string; color: string; emoji: string }> = {
+  pista: { label: 'Pista',  color: COLORS.pista, emoji: '🛹' },
+  rua:   { label: 'Street', color: COLORS.rua,   emoji: '🧱' },
 };

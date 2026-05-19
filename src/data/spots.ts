@@ -1,4 +1,4 @@
-import { Difficulty } from '../theme';
+import { Difficulty, SpotType } from '../theme';
 
 // ─── Spot Data Model ──────────────────────────────────────────────────────────
 
@@ -8,6 +8,7 @@ export interface Spot {
   neighborhood: string;
   city: string;
   difficulty: Difficulty;
+  type: SpotType;
   /** Cover image URI */
   imageUri: string;
   /** Number of skaters who "dropped in" (checked in) */
@@ -23,79 +24,100 @@ export interface Spot {
 }
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
-// Using high-quality Unsplash photos that work as placeholder images
 
 export const MOCK_SPOTS: Spot[] = [
+  // ── Picos de Rua ──────────────────────────────────────────────────────────
   {
     id: 'sp-001',
-    name: 'Vale do Anhangabaú',
+    name: 'Praça Roosevelt',
     neighborhood: 'Centro',
     city: 'São Paulo, SP',
-    difficulty: 'intermediate',
-    imageUri: 'https://images.unsplash.com/photo-1564466809058-bf4114d55352?w=800&q=80',
-    dropIns: 1284,
-    photoCount: 347,
-    features: ['Corrimão', 'Escada', 'Piso Liso'],
-    coordinates: { latitude: -23.5453, longitude: -46.6374 },
+    difficulty: 'pro',
+    type: 'rua',
+    imageUri: 'https://images.unsplash.com/photo-1542621334-a254cf47733d?w=800&q=80',
+    dropIns: 4284,
+    photoCount: 1347,
+    features: ['Bancos de Concreto', 'Bordas', 'Piso Liso'],
+    coordinates: { latitude: -23.5484, longitude: -46.6475 },
   },
   {
     id: 'sp-002',
-    name: 'Skate Plaza Ibirapuera',
-    neighborhood: 'Moema',
+    name: 'CCBB / Vale do Anhangabaú',
+    neighborhood: 'Centro',
     city: 'São Paulo, SP',
-    difficulty: 'beginner',
-    imageUri: 'https://images.unsplash.com/photo-1601268298774-e6cadb24ae08?w=800&q=80',
+    difficulty: 'pro',
+    type: 'rua',
+    imageUri: 'https://images.unsplash.com/photo-1575444758702-4a6b9222336e?w=800&q=80',
     dropIns: 2891,
-    photoCount: 512,
-    features: ['Manual Pad', 'Ledge', 'Bank'],
-    coordinates: { latitude: -23.5874, longitude: -46.6576 },
+    photoCount: 812,
+    features: ['Corrimão', 'Escada 14 Degraus', 'Gap Gigante'],
+    coordinates: { latitude: -23.5453, longitude: -46.6374 },
   },
   {
     id: 'sp-003',
     name: 'Largo da Batata',
     neighborhood: 'Pinheiros',
     city: 'São Paulo, SP',
-    difficulty: 'advanced',
-    imageUri: 'https://images.unsplash.com/photo-1532117182044-031e7cd916ee?w=800&q=80',
-    dropIns: 743,
-    photoCount: 189,
-    features: ['Gap', 'Drop', 'Rail'],
+    difficulty: 'intermediate',
+    type: 'rua',
+    imageUri: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&q=80',
+    dropIns: 1743,
+    photoCount: 489,
+    features: ['Gap', 'Manual Pad', 'Bordas de Granito'],
     coordinates: { latitude: -23.5647, longitude: -46.6944 },
   },
   {
     id: 'sp-004',
-    name: 'MASP Steps',
-    neighborhood: 'Bela Vista',
-    city: 'São Paulo, SP',
-    difficulty: 'pro',
-    imageUri: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80',
-    dropIns: 421,
-    photoCount: 934,
-    features: ['Escada Gigante', 'Corrimão Duplo', 'Piso de Pedra'],
-    coordinates: { latitude: -23.5614, longitude: -46.6560 },
-  },
-  {
-    id: 'sp-005',
-    name: 'Praça Olímpica Vila Madalena',
-    neighborhood: 'Vila Madalena',
+    name: 'Elevado Presidente João Goulart',
+    neighborhood: 'Santa Cecília',
     city: 'São Paulo, SP',
     difficulty: 'beginner',
-    imageUri: 'https://images.unsplash.com/photo-1609081219090-a6d81d3085bf?w=800&q=80',
-    dropIns: 3120,
-    photoCount: 678,
-    features: ['Bowl', 'Half-pipe', 'Quarter'],
-    coordinates: { latitude: -23.5533, longitude: -46.6927 },
+    type: 'rua',
+    imageUri: 'https://images.unsplash.com/photo-1605106901227-991bd663255a?w=800&q=80',
+    dropIns: 3210,
+    photoCount: 567,
+    features: ['Long Line', 'Flatground', 'Asfalto Liso'],
+    coordinates: { latitude: -23.5415, longitude: -46.6510 },
+  },
+
+  // ── Pistas ────────────────────────────────────────────────────────────────
+  {
+    id: 'sp-005',
+    name: 'Vila-Lobos Skatepark',
+    neighborhood: 'Alto de Pinheiros',
+    city: 'São Paulo, SP',
+    difficulty: 'intermediate',
+    type: 'pista',
+    imageUri: 'https://images.unsplash.com/photo-1574610758776-4b8e0e23b2f4?w=800&q=80',
+    dropIns: 5120,
+    photoCount: 1678,
+    features: ['Bowl', 'Street Plaza', 'Quarter Pipe'],
+    coordinates: { latitude: -23.5476, longitude: -46.7214 },
   },
   {
     id: 'sp-006',
-    name: 'Minhocão (Elevado)',
-    neighborhood: 'Santa Cecília',
+    name: 'Parque Zilda Natel (Sumaré)',
+    neighborhood: 'Perdizes',
     city: 'São Paulo, SP',
-    difficulty: 'intermediate',
-    imageUri: 'https://images.unsplash.com/photo-1581093196277-9f608bb3b511?w=800&q=80',
-    dropIns: 988,
-    photoCount: 256,
-    features: ['Long Line', 'Freestyle', 'Flat Ground'],
-    coordinates: { latitude: -23.5415, longitude: -46.6510 },
+    difficulty: 'advanced',
+    type: 'pista',
+    imageUri: 'https://images.unsplash.com/photo-1555817128-342abb9e69d4?w=800&q=80',
+    dropIns: 2450,
+    photoCount: 760,
+    features: ['Bowl Fundo', 'Half-pipe', 'Transições Radicais'],
+    coordinates: { latitude: -23.5422, longitude: -46.6784 },
+  },
+  {
+    id: 'sp-007',
+    name: 'Centro de Esportes Radicais - Tietê',
+    neighborhood: 'Bom Retiro',
+    city: 'São Paulo, SP',
+    difficulty: 'pro',
+    type: 'pista',
+    imageUri: 'https://images.unsplash.com/photo-1530092376999-2431865aa8df?w=800&q=80',
+    dropIns: 1840,
+    photoCount: 524,
+    features: ['Bowl Olímpico', 'Street Course', 'Banks'],
+    coordinates: { latitude: -23.5186, longitude: -46.6450 },
   },
 ];
