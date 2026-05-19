@@ -1,19 +1,57 @@
 import React from 'react';
-import { StyleSheet, View, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Map, Rss } from 'lucide-react-native';
+
 import { SpotFeed } from './src/screens/Feed';
+import { MapScreen } from './src/screens/Map';
+import { COLORS, FONT } from './src/theme';
+
+// ─── Tab Navigator ────────────────────────────────────────────────────────────
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <SpotFeed />
-    </View>
+    <NavigationContainer>
+      <StatusBar barStyle="light-content" backgroundColor={COLORS.bg} />
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: COLORS.bgCard,
+            borderTopColor: COLORS.border,
+            borderTopWidth: 1,
+            paddingBottom: 4,
+            height: 60,
+          },
+          tabBarActiveTintColor: COLORS.brand,
+          tabBarInactiveTintColor: COLORS.textMuted,
+          tabBarLabelStyle: {
+            fontSize: FONT.sizes.xs,
+            fontWeight: FONT.weights.semibold,
+            marginBottom: 4,
+          },
+          tabBarIcon: ({ color, size }) => {
+            if (route.name === 'Feed') {
+              return <Rss size={size} color={color} strokeWidth={2} />;
+            }
+            return <Map size={size} color={color} strokeWidth={2} />;
+          },
+        })}
+      >
+        <Tab.Screen
+          name="Feed"
+          component={SpotFeed}
+          options={{ tabBarLabel: 'Picos' }}
+        />
+        <Tab.Screen
+          name="Map"
+          component={MapScreen}
+          options={{ tabBarLabel: 'Mapa' }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#09090b',
-  },
-});
