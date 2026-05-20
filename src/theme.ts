@@ -23,8 +23,8 @@ export const COLORS = {
   pro: '#a855f7',          // purple
 
   // Spot type badges
-  pista: '#3b82f6',        // blue  — pista estruturada
-  rua: '#fb923c',          // orange — rua / street
+  pista: '#3b82f6',        // blue  — structured skatepark
+  rua: '#fb923c',          // orange — street spot
 
   // Borders
   border: '#3f3f46',

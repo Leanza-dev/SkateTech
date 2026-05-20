@@ -26,7 +26,7 @@ export interface Spot {
 // ─── Mock Data ────────────────────────────────────────────────────────────────
 
 export const MOCK_SPOTS: Spot[] = [
-  // ── Picos de Rua ──────────────────────────────────────────────────────────
+  // ── Street Spots ──────────────────────────────────────────────────────────
   {
     id: 'sp-001',
     name: 'Praça Roosevelt',
@@ -84,7 +84,7 @@ export const MOCK_SPOTS: Spot[] = [
     coordinates: { latitude: -23.5415, longitude: -46.6510 },
   },
 
-  // ── Pistas ────────────────────────────────────────────────────────────────
+  // ── Skateparks ────────────────────────────────────────────────────────────────
   {
     id: 'sp-005',
     name: 'Vila-Lobos Skatepark',

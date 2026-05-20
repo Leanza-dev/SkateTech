@@ -1,12 +1,14 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback, useState, useEffect } from 'react';
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
+import * as Haptics from 'expo-haptics';
+import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, withSequence } from 'react-native-reanimated';
 import { MapPin, Camera, TrendingUp } from 'lucide-react-native';
 import { Spot } from '../data/spots';
 import { COLORS, DIFFICULTY_CONFIG, TYPE_CONFIG, FONT, SPACING, RADIUS } from '../theme';
@@ -69,25 +71,49 @@ interface SpotCardProps {
 }
 
 export const SpotCard = memo(({ spot, onPress }: SpotCardProps) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const opacity = useSharedValue(0.4);
+
+  useEffect(() => {
+    if (!isLoaded) {
+      opacity.value = withRepeat(
+        withSequence(withTiming(0.8, { duration: 800 }), withTiming(0.4, { duration: 800 })),
+        -1,
+        true
+      );
+    }
+  }, [isLoaded]);
+
+  const skeletonStyle = useAnimatedStyle(() => ({
+    opacity: opacity.value,
+  }));
+
   const formatCount = (n: number): string =>
     n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n);
+
+  const handlePress = useCallback(() => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+    onPress?.(spot);
+  }, [onPress, spot]);
 
   return (
     <TouchableOpacity
       style={styles.card}
-      onPress={() => onPress?.(spot)}
+      onPress={handlePress}
       activeOpacity={0.9}
       accessibilityLabel={`Spot: ${spot.name}, ${DIFFICULTY_CONFIG[spot.difficulty].label}`}
       accessibilityRole="button"
     >
       {/* ── Cover Image ── */}
       <View style={styles.imageContainer}>
-        <Image
+        {!isLoaded && <Animated.View style={[styles.skeleton, skeletonStyle]} />}
+        <ExpoImage
           source={{ uri: spot.imageUri }}
           style={styles.image}
-          resizeMode="cover"
-          // Performance: only decode when visible
-          defaultSource={{ uri: 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' }}
+          contentFit="cover"
+          transition={400}
+          cachePolicy="memory-disk"
+          onLoad={() => setIsLoaded(true)}
         />
         {/* Gradient overlay for text legibility */}
         <View style={styles.imageOverlay} />
@@ -159,6 +185,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: IMAGE_HEIGHT,
     backgroundColor: COLORS.surface,
+    position: 'relative',
+  },
+  skeleton: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: COLORS.border,
   },
   image: {
     width: '100%',

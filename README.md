@@ -1,6 +1,6 @@
 # SkateTech 🛹
 
-> 🇺🇸 English | [🇧🇷 Português](#-como-rodar-localmente)
+> 🇺🇸 English
 
 **An advanced full-cycle mobile engineering case study — building a production-quality React Native application to explore high-performance list rendering, offline-first architecture, geolocation UX, and type-safe data modeling with TypeScript.**
 
@@ -85,20 +85,7 @@ npx expo start
 
 Scan the QR code with Expo Go on your device to run the app natively. Press `w` for the web emulator, `i` for iOS simulator, or `a` for Android emulator.
 
----
 
-## 🚀 Como Rodar Localmente
-
-```bash
-git clone https://github.com/Leanza-dev/SkateTech.git
-cd SkateTech
-npm install
-npx expo start
-```
-
-Abra a câmera do celular e escaneie o **QR Code** que aparecerá no terminal (certifique-se de ter o **Expo Go** instalado). Pressione `w` para o emulador Web, `i` para iOS ou `a` para Android.
-
----
 
 ## Roadmap
 
