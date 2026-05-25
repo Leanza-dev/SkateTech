@@ -11,13 +11,6 @@
 
 ---
 
-<div align="center">
-  <!-- TODO: GRAVAR E INSERIR GIF/VÍDEO DA TELA DO APP AQUI -->
-  <i>[ Demo Video Placeholder - Insert your App Screen Recording GIF here ]</i>
-</div>
-
----
-
 ## 🎯 Engineering Objectives
 
 Mobile engineering has a different class of challenges than backend systems: you're working with constrained memory, unreliable networks, and a rendering pipeline that must stay above 60fps. This project was built to confront those constraints directly.
@@ -96,5 +89,3 @@ Scan the QR code with Expo Go on your device to run the app natively. Press `w` 
 - [ ] Full offline mode with conflict resolution on reconnect
 
 ---
-
-*Pedro Leanza — CS Student · AI-Augmented Engineering · Mobile & Frontend*
